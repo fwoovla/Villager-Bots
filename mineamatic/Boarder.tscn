@@ -1,0 +1,42 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://assets/boarder.png" type="Texture" id=1]
+
+[sub_resource type="SpatialMaterial" id=1]
+albedo_texture = ExtResource( 1 )
+
+[sub_resource type="BoxShape" id=2]
+extents = Vector3( 14.8718, 5.21645, 1 )
+
+[node name="Boarder" type="StaticBody"]
+
+[node name="CSGBox" type="CSGBox" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.535, 5.237, 0 )
+width = 30.0
+height = 10.0
+material = SubResource( 1 )
+
+[node name="CSGBox" type="CSGBox" parent="CSGBox"]
+transform = Transform( 0.866025, -0.5, 0, 0.5, 0.866025, 0, 0, 0, 1, 1.30241, 7.21715, 1.16467 )
+operation = 2
+width = 10.0
+height = 10.0
+depth = 5.0
+
+[node name="CSGBox2" type="CSGBox" parent="CSGBox"]
+transform = Transform( 0.866025, -0.5, 0, 0.5, 0.866025, 0, 0, 0, 1, -9.90554, 7.21715, 1.16467 )
+operation = 2
+width = 10.0
+height = 10.0
+depth = 5.0
+
+[node name="CSGBox3" type="CSGBox" parent="CSGBox"]
+transform = Transform( 0.595982, -0.802998, 0, 0.802998, 0.595982, 0, 0, 0, 1, 10.4948, 7.21715, 1.16467 )
+operation = 2
+width = 10.0
+height = 10.0
+depth = 5.0
+
+[node name="CollisionShape" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.519189, 5.34124, 0 )
+shape = SubResource( 2 )

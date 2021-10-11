@@ -1,0 +1,105 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://World.gd" type="Script" id=1]
+[ext_resource path="res://Arena.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Toot.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Rock1.tscn" type="PackedScene" id=4]
+
+[sub_resource type="ImageTexture" id=1]
+
+[sub_resource type="PanoramaSky" id=2]
+panorama = SubResource( 1 )
+
+[sub_resource type="Environment" id=3]
+background_mode = 1
+background_sky = SubResource( 2 )
+background_color = Color( 0.0941176, 0.117647, 0.188235, 1 )
+ambient_light_color = Color( 0.831373, 0.831373, 0.776471, 1 )
+ambient_light_energy = 0.2
+fog_color = Color( 0.607843, 0.615686, 0.623529, 1 )
+fog_depth_end = 150.0
+fog_depth_curve = 1.93187
+dof_blur_far_enabled = true
+dof_blur_far_distance = 100.0
+dof_blur_far_amount = 0.05
+
+[sub_resource type="Environment" id=4]
+ambient_light_color = Color( 0.972549, 0.964706, 0.964706, 1 )
+ambient_light_energy = 0.3
+tonemap_mode = 2
+
+[node name="World" type="Spatial"]
+script = ExtResource( 1 )
+num_of_rocks = 200
+num_of_trees = 100
+num_of_berries = 100
+
+[node name="Arena" parent="." instance=ExtResource( 2 )]
+transform = Transform( 3, 0, 0, 0, 1, 0, 0, 0, 3, 0, 0, 0 )
+
+[node name="DirectionalLight" type="DirectionalLight" parent="."]
+transform = Transform( 1, 0, 0, 0, 0.735786, 0.677214, 0, -0.677214, 0.735786, 0, 42.1875, 105.404 )
+light_color = Color( 0.992157, 0.882353, 0.388235, 1 )
+light_energy = 0.5
+shadow_enabled = true
+
+[node name="Toots" type="Spatial" parent="."]
+
+[node name="Toot4" parent="Toots" instance=ExtResource( 3 )]
+transform = Transform( 0.5, 0, 0, 0, -2.18557e-08, -0.7, 0, 0.5, -3.0598e-08, 9.03607, 1.55267, 2.30955 )
+
+[node name="Camera" type="Camera" parent="Toots/Toot4"]
+transform = Transform( 2, 0, 0, 0, -1.576, 1.23135, 0, -0.879535, -1.12572, -6.57414, 52.6743, -53.335 )
+environment = SubResource( 3 )
+fov = 44.3
+far = 126.3
+
+[node name="Toot5" parent="Toots" instance=ExtResource( 3 )]
+transform = Transform( 0.5, 0, 0, 0, -2.18557e-08, -0.7, 0, 0.5, -3.0598e-08, -67.7025, 1.55267, 2.30955 )
+
+[node name="Camera" type="Camera" parent="Toots/Toot5"]
+transform = Transform( 2, 0, 0, 0, -1.576, 1.23135, 0, -0.879535, -1.12572, -6.57414, 52.6743, -53.335 )
+environment = SubResource( 3 )
+fov = 44.3
+far = 126.3
+
+[node name="Toot6" parent="Toots" instance=ExtResource( 3 )]
+transform = Transform( 0.5, 0, 0, 0, -2.18557e-08, -0.7, 0, 0.5, -3.0598e-08, -67.7025, 1.55267, 53.4826 )
+
+[node name="Camera" type="Camera" parent="Toots/Toot6"]
+transform = Transform( 2, 0, 0, 0, -1.576, 1.23135, 0, -0.879535, -1.12572, -6.57414, 52.6743, -53.335 )
+environment = SubResource( 3 )
+fov = 44.3
+far = 126.3
+
+[node name="Toot7" parent="Toots" instance=ExtResource( 3 )]
+transform = Transform( 0.5, 0, 0, 0, -2.18557e-08, -0.7, 0, 0.5, -3.0598e-08, -67.7025, 1.55267, -55.0713 )
+
+[node name="Camera" type="Camera" parent="Toots/Toot7"]
+transform = Transform( 2, 0, 0, 0, -1.576, 1.23135, 0, -0.879535, -1.12572, -6.57414, 52.6743, -53.335 )
+environment = SubResource( 3 )
+fov = 44.3
+far = 126.3
+
+[node name="Toot8" parent="Toots" instance=ExtResource( 3 )]
+transform = Transform( 0.5, 0, 0, 0, -2.18557e-08, -0.7, 0, 0.5, -3.0598e-08, 23.1449, 1.55267, -55.0713 )
+
+[node name="Camera" type="Camera" parent="Toots/Toot8"]
+transform = Transform( 2, 0, 0, 0, -1.576, 1.23135, 0, -0.879535, -1.12572, -6.57414, 52.6743, -53.335 )
+environment = SubResource( 3 )
+fov = 44.3
+far = 126.3
+
+[node name="Resources" type="Spatial" parent="."]
+
+[node name="Rock1" parent="Resources" instance=ExtResource( 4 )]
+visible = false
+
+[node name="CameraRig" type="Spatial" parent="."]
+
+[node name="Camera" type="Camera" parent="CameraRig"]
+transform = Transform( -0.0493593, 0.663011, -0.74698, -0.0110032, 0.747486, 0.664187, 0.998721, 0.041003, -0.0296001, -46.9865, 31.9317, 6.51414 )
+environment = SubResource( 4 )
+current = true
+fov = 80.0
+far = 200.0

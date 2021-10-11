@@ -1,0 +1,55 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://Toot.gd" type="Script" id=1]
+
+[sub_resource type="CapsuleMesh" id=1]
+mid_height = 1.2
+radial_segments = 66
+rings = 10
+
+[sub_resource type="CapsuleShape" id=2]
+
+[sub_resource type="CylinderMesh" id=3]
+top_radius = 0.5
+bottom_radius = 0.05
+height = 1.0
+
+[sub_resource type="SphereShape" id=4]
+radius = 2.0
+
+[sub_resource type="SphereShape" id=5]
+radius = 30.0
+
+[node name="Toot" type="KinematicBody"]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 1.55267, 0 )
+script = ExtResource( 1 )
+
+[node name="MeshInstance" type="MeshInstance" parent="."]
+mesh = SubResource( 1 )
+material/0 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="."]
+shape = SubResource( 2 )
+
+[node name="MeshInstance2" type="MeshInstance" parent="."]
+transform = Transform( 0.999998, 0, 0, 0, 0.954838, 0.424459, 0, -0.207985, 0.954838, 0, -0.924746, -0.638048 )
+mesh = SubResource( 3 )
+material/0 = null
+
+[node name="Touch" type="Area" parent="."]
+
+[node name="CollisionShape" type="CollisionShape" parent="Touch"]
+shape = SubResource( 4 )
+
+[node name="Sight" type="Area" parent="."]
+
+[node name="CollisionShape" type="CollisionShape" parent="Sight"]
+shape = SubResource( 5 )
+
+[node name="ThinkingTime" type="Timer" parent="."]
+
+[node name="ActionTime" type="Timer" parent="."]
+[connection signal="body_entered" from="Touch" to="." method="_on_Area_body_entered"]
+[connection signal="body_entered" from="Sight" to="." method="_on_Sight_body_entered"]
+[connection signal="timeout" from="ThinkingTime" to="." method="_on_ThinkingTime_timeout"]
+[connection signal="timeout" from="ActionTime" to="." method="_on_ActionTime_timeout"]
